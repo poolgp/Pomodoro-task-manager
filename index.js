@@ -47,6 +47,16 @@ swalWithBootstrapButtons.fire({
 });
 */
 
+function contador25() {
+    
+}
+function contador5() {
+    
+}
+function contador15() {
+    
+}
+
 function newTasca(){
     const divTasca = document.createElement('div');
     divTasca.className='creartasca';

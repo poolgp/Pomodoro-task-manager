@@ -83,6 +83,9 @@
     margin: 4%;
   }
   .playPause,
+  .contador25,
+  .contador5,
+  .contador15,
   .newTasca {
     background-color: gray;
     border: none;
