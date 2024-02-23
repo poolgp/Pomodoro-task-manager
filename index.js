@@ -1,63 +1,51 @@
-/*
-ALERTA TAREA COMPLETADA
+// function newTasca() {
+//   Swal.fire({
+//     title: "Create New Task",
+//     html:
+//       '<input id="task-name" class="swal2-input" placeholder="Task Name">' +
+//       '<textarea id="task-description" class="swal2-textarea" placeholder="Task Description"></textarea>',
+//     showCancelButton: true,
+//     confirmButtonText: "Create Task",
+//     cancelButtonText: "Cancel",
+//     focusConfirm: false,
+//     preConfirm: () => {
+//       const taskName = Swal.getPopup().querySelector("#task-name").value;
+//       const taskDescription =
+//         Swal.getPopup().querySelector("#task-description").value;
+//       console.log("Task Name:", taskName);
+//       console.log("Task Description:", taskDescription);
+//     },
+//   });
+// }
 
-Swal.fire({
-  position: "top-end",
-  icon: "success",
-  title: "Your work has been saved",
-  showConfirmButton: false,
-  timer: 1500
-});
-*/
 
-/*
-CONFIRMAR ELIMINAR
-
-const swalWithBootstrapButtons = Swal.mixin({
-  customClass: {
-    confirmButton: "btn btn-success",
-    cancelButton: "btn btn-danger"
-  },
-  buttonsStyling: false
-});
-swalWithBootstrapButtons.fire({
-  title: "Are you sure?",
-  text: "You won't be able to revert this!",
-  icon: "warning",
-  showCancelButton: true,
-  confirmButtonText: "Yes, delete it!",
-  cancelButtonText: "No, cancel!",
-  reverseButtons: true
-}).then((result) => {
-  if (result.isConfirmed) {
-    swalWithBootstrapButtons.fire({
-      title: "Deleted!",
-      text: "Your file has been deleted.",
-      icon: "success"
-    });
-  } else if (
-    result.dismiss === Swal.DismissReason.cancel
-  ) {
-    swalWithBootstrapButtons.fire({
-      title: "Cancelled",
-      text: "Your imaginary file is safe :)",
-      icon: "error"
+function newTasca() {
+    Swal.fire({
+      title: "Create New Task",
+      html:
+        '<input id="task-name" class="swal2-input" placeholder="Task Name">' +
+        '<textarea id="task-description" class="swal2-textarea" placeholder="Task Description"></textarea>',
+      showCancelButton: true,
+      confirmButtonText: "Create Task",
+      cancelButtonText: "Cancel",
+      focusConfirm: false,
+      preConfirm: () => {
+        const taskName = Swal.getPopup().querySelector("#task-name").value;
+        const taskDescription = Swal.getPopup().querySelector("#task-description").value;
+        console.log("Task Name:", taskName);
+        console.log("Task Description:", taskDescription);
+        
+        // Crear un nuevo elemento div para representar la tarea
+        const newTaskElement = document.createElement("div");
+        newTaskElement.classList.add("task");
+        
+        // Asignar el nombre y la descripción como contenido del nuevo elemento
+        newTaskElement.innerHTML = `<h4>${taskName}</h4><p>${taskDescription}</p>`;
+        
+        // Agregar la tarea al contenedor de tareas pendientes
+        const pendentTasksContainer = document.getElementById("pendentTasks");
+        pendentTasksContainer.appendChild(newTaskElement);
+      },
     });
   }
-});
-*/
-
-function contador25() {
-    
-}
-function contador5() {
-    
-}
-function contador15() {
-    
-}
-
-function newTasca(){
-    const divTasca = document.createElement('div');
-    divTasca.className='creartasca';
-}
+  
