@@ -1,83 +1,94 @@
 <!DOCTYPE html>
 <html lang="en">
-    <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Pomodoro task manager</title>
 
-        <script src="https://kit.fontawesome.com/c7334dda94.js"
-            crossorigin="anonymous"></script>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pomodoro task manager</title>
 
-        <link rel="stylesheet" href="index.css">
+    <script src="https://kit.fontawesome.com/c7334dda94.js" crossorigin="anonymous"></script>
 
-        <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <link rel="stylesheet" href="index.css">
 
-    </head>
-    <body>
-        <header class="titulo">
-            <div class="h1titulo">
-                <h1>Pomodoro task manager</h1>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+</head>
+
+<body>
+    <header class="titulo">
+        <div class="h1titulo">
+            <h1>Pomodoro task manager</h1>
+        </div>
+    </header>
+
+    <main class="main">
+        <section class="kanban">
+            <div class="pendent">
+                <div class="pendentTitulo">
+                    <h3>Pendent</h3>
+                </div>
+                <div class="pendentCuerpo" id="tasquesPendents">
+
+                </div>
             </div>
-        </header>
-
-        <main class="main">
-            <section class="kanban">
-                <div class="pendent">
-                    <div class="pendentTitulo">
-                        <h3>Pendent</h3>
-                    </div>
-                    <div class="pendentCuerpo" id="tasquesPendents">
-
-                    </div>
+            <div class="progres">
+                <div class="progresTitulo">
+                    <h3>En Progrés</h3>
                 </div>
-                <div class="progres">
-                    <div class="progresTitulo">
-                        <h3>En Progrés</h3>
-                    </div>
-                    <div class="progresCuerpo" id="tasquesProgres">
+                <div class="progresCuerpo" id="tasquesProgres">
 
-                    </div>
                 </div>
-                <div class="completada">
-                    <div class="completadaTitulo">
-                        <h3>Completada</h3>
-                    </div>
-                    <div class="completadaCuerpo" id="tasquesCompletada">
+            </div>
+            <div class="completada">
+                <div class="completadaTitulo">
+                    <h3>Completada</h3>
+                </div>
+                <div class="completadaCuerpo" id="tasquesCompletada">
 
-                    </div>
                 </div>
-            </section>
+            </div>
+        </section>
 
-            <section class="pomodoro">
-                <div class="descripcio">
-                    descripcio tasca
-                </div>
-                <div class="temporitzador">
-                    <div class="contador">
+        <section class="pomodoro">
+            <div class="descripcio">
+                <h3 class="titolDesc" id="titolDesc">Descripcio</h3>
+                <p class="descDesc" id="descDesc">sadaskljohvnwenknfoiwebfoiik</p>
+            </div>
+            <div class="temporitzador">
+                <div class="crono" id="crono">
+                    <div class="contador" id="contador">
                         countdown
                     </div>
                     <button class="playPause" onclick="EmpezarContador()">
                         <i class="fa-solid fa-play" title="playPause"></i>
                     </button>
-
-                    <button class="contador25" onclick="contador25()">
-                        <p>25 min</p>
-                    </button>
-
-                    <button class="contador5" onclick="contador5()">
-                        <p>5 min</p>
-                    </button>
-
-                    <button class="contador15" onclick="contador15()">
-                        <p>15 min</p>
-                    </button>
-
-                    <button class="newTasca" onclick="newTasca()">
-                        <i class="fa-solid fa-plus"></i>
-                    </button>
                 </div>
-            </section>
-        </main>
-        <script src="index.js"></script>
-    </body>
+                <!-- <div class="contador">
+                    countdown
+                </div>
+                <button class="playPause" onclick="EmpezarContador()">
+                    <i class="fa-solid fa-play" title="playPause"></i>
+                </button>
+
+                <button class="contador25" onclick="contador25()">
+                    <p>25 min</p>
+                </button>
+
+                <button class="contador5" onclick="contador5()">
+                    <p>5 min</p>
+                </button>
+
+                <button class="contador15" onclick="contador15()">
+                    <p>15 min</p>
+                </button>
+
+                <button class="newTasca" onclick="newTasca()">
+                    <i class="fa-solid fa-plus"></i>
+                </button> -->
+            </div>
+        </section>
+    </main>
+    <script src="index.js"></script>
+</body>
+
 </html>
