@@ -50,7 +50,6 @@ hr {
   box-shadow: none;
 }
 
-
 .pendentCuerpo,
 .progresCuerpo,
 .completadaCuerpo {
@@ -103,8 +102,9 @@ hr {
   cursor: pointer;
 }
 
-.tiempos i {
-  font-size: 30px;
+.main i {
+  font-size: 15px;
+  margin: 10px;
 }
 
 .tiempos {
@@ -135,12 +135,19 @@ hr {
   cursor: pointer;
 }
 
-.taskH4{
-display: flex;
-justify-content: space-around;
+.task {
+  margin: 10px;
+  border: solid 2px red;
+  background-color: #d5dbdb;
+  margin-top: 0px;
 }
-.taskP{
+
+.taskH4 {
+  display: flex;
+  justify-content: space-around;
+}
+
+.taskP {
   display: flex;
   margin: 0px 20px 0px 20px;
-
 }
