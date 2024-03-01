@@ -24,26 +24,32 @@
 
         <main class="main">
             <section class="kanban">
-                <div class="pendent">
+                <div class="pendent" id="pendent">
                     <div class="pendentTitulo">
                         <h3>Pendent</h3>
                     </div>
+                    <hr/>
                     <div class="pendentCuerpo" id="tasquesPendents">
-
+                        <h4 class="taskH4">Tit</h4>
+                        <p class="taskP">Desc</p>
+                        <hr/>
+                        <button class="delete"></button>
                     </div>
                 </div>
-                <div class="progres">
+                <div class="progres" id="progres">
                     <div class="progresTitulo">
                         <h3>En Progrés</h3>
                     </div>
+                    <hr/>
                     <div class="progresCuerpo" id="tasquesProgres">
 
                     </div>
                 </div>
-                <div class="completada">
+                <div class="completada" id="completada">
                     <div class="completadaTitulo">
                         <h3>Completada</h3>
                     </div>
+                    <hr/>
                     <div class="completadaCuerpo" id="tasquesCompletada">
 
                     </div>
@@ -77,7 +83,7 @@
                         </button>
                     </div>
                     <div class="tarea">
-                        <button class="nuevaTarea" onclick>
+                        <button class="nuevaTarea" onclick="newTasca()">
                             <i class="fa-solid fa-plus"></i>
                         </button>
                     </div>

@@ -44,6 +44,13 @@ body {
   width: 100%;
 }
 
+hr {
+  border: 2px solid black;
+  border-width: 2px;
+  box-shadow: none;
+}
+
+
 .pendentCuerpo,
 .progresCuerpo,
 .completadaCuerpo {
@@ -126,4 +133,14 @@ body {
   height: 60%;
   width: 50%;
   cursor: pointer;
+}
+
+.taskH4{
+display: flex;
+justify-content: space-around;
+}
+.taskP{
+  display: flex;
+  margin: 0px 20px 0px 20px;
+
 }
