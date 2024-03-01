@@ -1,89 +1,90 @@
 <!DOCTYPE html>
 <html lang="en">
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Pomodoro task manager</title>
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Pomodoro task manager</title>
 
-    <script src="https://kit.fontawesome.com/c7334dda94.js" crossorigin="anonymous"></script>
+        <script src="https://kit.fontawesome.com/c7334dda94.js"
+            crossorigin="anonymous"></script>
 
-    <link rel="stylesheet" href="index.css">
+        <link rel="stylesheet" href="index.css">
 
-    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+        <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
-</head>
+    </head>
 
-<body>
-    <header class="titulo">
-        <div class="h1titulo">
-            <h1>Pomodoro task manager</h1>
-        </div>
-    </header>
-
-    <main class="main">
-        <section class="kanban">
-            <div class="pendent">
-                <div class="pendentTitulo">
-                    <h3>Pendent</h3>
-                </div>
-                <div class="pendentCuerpo" id="tasquesPendents">
-
-                </div>
+    <body>
+        <header class="titulo">
+            <div class="h1titulo">
+                <h1>Pomodoro task manager</h1>
             </div>
-            <div class="progres">
-                <div class="progresTitulo">
-                    <h3>En Progrés</h3>
-                </div>
-                <div class="progresCuerpo" id="tasquesProgres">
+        </header>
 
-                </div>
-            </div>
-            <div class="completada">
-                <div class="completadaTitulo">
-                    <h3>Completada</h3>
-                </div>
-                <div class="completadaCuerpo" id="tasquesCompletada">
-
-                </div>
-            </div>
-        </section>
-
-        <section class="pomodoro">
-            <div class="descripcio">
-                <h3 class="titolDesc" id="titolDesc">Descripcio</h3>
-                <p class="descDesc" id="descDesc">sadaskljohvnwenknfoiwebfoiik</p>
-            </div>
-            <div class="temporitzador">
-                <div class="crono" id="crono">
-                    <div class="contador" id="contador">
-                        countdown
+        <main class="main">
+            <section class="kanban">
+                <div class="pendent">
+                    <div class="pendentTitulo">
+                        <h3>Pendent</h3>
                     </div>
-                    <button class="playPause" onclick="EmpezarContador()">
-                        <i class="fa-solid fa-play" title="playPause"></i>
-                    </button>
+                    <div class="pendentCuerpo" id="tasquesPendents">
+
+                    </div>
                 </div>
-                <div class="tiempos">
-                    <i class="fa-solid fa-stopwatch-20"></i>
-                    <button class="minutos" onclick="">
-                        5 minutos
-                    </button>
-                    <button class="minutos" onclick="">
-                        15 minutos
-                    </button>
-                    <button class="minutos" onclick="">
-                        25 minutos
-                    </button>
+                <div class="progres">
+                    <div class="progresTitulo">
+                        <h3>En Progrés</h3>
+                    </div>
+                    <div class="progresCuerpo" id="tasquesProgres">
+
+                    </div>
                 </div>
-                <div class="tarea">
-                    <button class="nuevaTarea" onclick="">
-                        <i class="fa-solid fa-plus"></i>
-                    </button>
+                <div class="completada">
+                    <div class="completadaTitulo">
+                        <h3>Completada</h3>
+                    </div>
+                    <div class="completadaCuerpo" id="tasquesCompletada">
+
+                    </div>
                 </div>
-            </div>
-        </section>
-    </main>
-    <script src="index.js"></script>
-</body>
+            </section>
+
+            <section class="pomodoro">
+                <div class="descripcio">
+                    <h3 class="titolDesc" id="titolDesc">Descripcio</h3>
+                    <p class="descDesc"
+                        id="descDesc">sadaskljohvnwenknfoiwebfoiik</p>
+                </div>
+                <div class="temporitzador">
+                    <div class="crono" id="crono">
+                        <div class="contador" id="contador">
+                            countdown
+                        </div>
+                        <button class="playPause" onclick="EmpezarContador()">
+                            <i class="fa-solid fa-play" title="playPause"></i>
+                        </button>
+                    </div>
+                    <div class="tiempos">
+                        <button class="minutos" onclick>
+                            5 minutos
+                        </button>
+                        <button class="minutos" onclick>
+                            15 minutos
+                        </button>
+                        <button class="minutos" onclick>
+                            25 minutos
+                        </button>
+                    </div>
+                    <div class="tarea">
+                        <button class="nuevaTarea" onclick>
+                            <i class="fa-solid fa-plus"></i>
+                        </button>
+                    </div>
+                </div>
+            </section>
+        </main>
+        <script src="index.js"></script>
+    </body>
 
 </html>
