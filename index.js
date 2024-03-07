@@ -1,4 +1,4 @@
-function newTasca() {
+document.addEventListener("DOMContentLoaded", function newTasca() {
   Swal.fire({
     title: "Create New Task",
     html:
@@ -65,6 +65,10 @@ function newTasca() {
       pendentTasksContainer.appendChild(newTaskElement);
     },
   });
-}
 
-// guardarLocalString();
+
+function getTasksFromLocalStorage() {
+  const storedTasks = localStorage.getItem("tasks");
+  return storedTasks ? JSON.parse(storedTasks) : [];
+}
+}
