@@ -153,8 +153,8 @@ hr {
 
 .task {
   margin: 10px;
-  border: solid 2px red;
-  background-color: #d5dbdb;
+  border: solid 2px #ff6f61;
+  background-color: #FDFEFE;
   margin-top: 0px;
 }
 
@@ -166,4 +166,9 @@ hr {
 .taskP {
   display: flex;
   margin: 0px 20px 0px 20px;
+}
+
+.buttons{
+  display: flex;
+  justify-content: space-evenly;
 }
