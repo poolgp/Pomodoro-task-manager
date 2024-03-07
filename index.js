@@ -30,7 +30,7 @@ function newTasca() {
       </button>
       `;
 
-      guardarLocalString();
+      // guardarLocalString();
 
       const pendentTasksContainer = document.getElementById("tasquesPendents");
       pendentTasksContainer.appendChild(newTaskElement);
@@ -38,4 +38,4 @@ function newTasca() {
   });
 }
 
-guardarLocalString();
+// guardarLocalString();
