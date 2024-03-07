@@ -97,10 +97,15 @@ hr {
 }
 
 .playPause {
+  color: #000000;
   background-color: #ff6f61;
   height: 60%;
   width: 15%;
   cursor: pointer;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-decoration: none;
 }
 
 .main i {
@@ -115,11 +120,16 @@ hr {
   width: 100%;
 }
 
-.minutos {
+.minutos{
+  color: #000000;
   background-color: #ff6f61;
   height: 60%;
   width: 20%;
   cursor: pointer;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-decoration: none;
 }
 
 .tarea {
@@ -130,10 +140,15 @@ hr {
 }
 
 .nuevaTarea {
+  color: #000000;
   background-color: #ff6f61;
   height: 60%;
   width: 50%;
   cursor: pointer;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-decoration: none;
 }
 
 .task {
