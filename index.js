@@ -1,74 +1,41 @@
-document.addEventListener("DOMContentLoaded", function newTasca() {
-  Swal.fire({
-    title: "Create New Task",
-    html:
-      '<input id="task-name" class="swal2-input" placeholder="Task Name">' +
-      '<textarea id="task-description" class="swal2-textarea" placeholder="Task Description"></textarea>',
-    showCancelButton: true,
-    confirmButtonText: "Create Task",
-    cancelButtonText: "Cancel",
-    focusConfirm: false,
-    preConfirm: () => {
-      const taskName = Swal.getPopup().querySelector("#task-name").value;
-      const taskDescription =
-        Swal.getPopup().querySelector("#task-description").value;
+// Obtiene la referencia al elemento del contador
+var contador = document.getElementById('contador');
 
-      // Guardar la tarea en el localStorage
-      const task = {
-        name: taskName,
-        description: taskDescription,
-      };
+// Obtiene la referencia al botón de play/pausa
+var playPause = document.getElementById('playPause');
 
-      // Obtener las tareas existentes del localStorage
-      let existingTasks = JSON.parse(localStorage.getItem("tasks")) || [];
+// Inicializa las variables para el temporizador
+var tiempoInicial;
+var tiempoRestante;
+var intervalo;
 
-      // Agregar la nueva tarea a la lista
-      existingTasks.push(task);
+// Agrega un event listener al botón de play/pausa
+playPause.addEventListener('click', function() {
+  // Obtiene el tiempo seleccionado en el temporizador
+  var tiempoSeleccionado = obtenerTiempoSeleccionado();
 
-      // Guardar la lista actualizada en el localStorage
-      localStorage.setItem("tasks", JSON.stringify(existingTasks));
+  // Inicializa el temporizador
+  if (!tiempoInicial) {
+    // Obtiene el tiempo actual del sistema
+    tiempoInicial = Date.now();
 
-      console.log("Task Name:", taskName);
-      console.log("Task Description:", taskDescription);
+    // Calcula el tiempo restante
+    tiempoRestante = tiempoSeleccionado * 60 * 1000;
 
-      const newTaskElement = document.createElement("div");
-      newTaskElement.classList.add("task");
+    // Inicia el intervalo de actualización del contador
+    intervalo = setInterval(function() {
+      actualizarContador(tiempoRestante);
+    }, 100);
+  } else {
+    // Detiene el intervalo de actualización del contador
+    clearInterval(intervalo);
 
-      newTaskElement.innerHTML = `
-      <h4 class = "taskH4">${taskName}</h4>
-      <p class = "taskP">${taskDescription}</p>
-      <br/>
-      <div class="buttons">
-      <a class="taskInfo" id="taskInfo">
-      <i class="fa-solid fa-circle-info"></i>
-      </a>
-      <a class="taskDelete" id="taskDelete">
-      <i class="fa-solid fa-trash-can"></i>
-      </a>
-      </div>
-      `;
+    // Reinicia el temporizador
+    tiempoInicial = null;
+    contador.textContent = 'countdown';
+  }
+});
 
-      // guardarLocalString();
-
-      /*
-      <div class="buttons">
-      <a href="#" class="taskInfo" id="taskInfo" onclick="#">
-      <i class="fa-solid fa-circle-info"></i>
-      </a>
-      <a href="#" class="taskDelete" id="taskDelete" onclick="#">
-      <i class="fa-solid fa-trash-can"></i>
-      </a>
-      </div>
-      */
-
-      const pendentTasksContainer = document.getElementById("tasquesPendents");
-      pendentTasksContainer.appendChild(newTaskElement);
-    },
-  });
-
-
-function getTasksFromLocalStorage() {
-  const storedTasks = localStorage.getItem("tasks");
-  return storedTasks ? JSON.parse(storedTasks) : [];
-}
-}
+// Función para obtener el tiempo seleccionado en el temporizador
+function obtenerTiempoSeleccionado() {
+  // Obtiene las referencias a los botones de los tempor
