@@ -45,7 +45,7 @@ div.tituloColumna {
 }
 
 hr.separacion {
-  background-color: black;
+  border: solid 2px black;
   margin: 0px;
 }
 
