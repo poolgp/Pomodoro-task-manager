@@ -1,184 +1,161 @@
-const contador = document.querySelector(".tiempo");
-let tiempoSeleccionado = 25 * 60; // Convertir minutos a segundos
-let tiempoRestante = tiempoSeleccionado; // Inicializar el tiempo restante
+// Elements del DOM
+const timerDisplay = document.getElementById("timer-display");
+const startPauseBtn = document.getElementById("start-pause-btn");
+const resetBtn = document.getElementById("reset-btn");
+const studyBtn = document.getElementById("study-btn");
+const shortBreakBtn = document.getElementById("short-break-btn");
+const longBreakBtn = document.getElementById("long-break-btn");
+const addTaskBtn = document.getElementById("add-task-btn");
+const pendingTasks = document.getElementById("pending-tasks");
+const inProgressTasks = document.getElementById("in-progress-tasks");
+const completedTasks = document.getElementById("completed-tasks");
 
-function actualizarContador(tiempo) {
-  const minutos = Math.floor(tiempo / 60);
-  const segundos = tiempo % 60;
-  const minutosMostrados = minutos < 10 ? "0" + minutos : minutos;
-  const segundosMostrados = segundos < 10 ? "0" + segundos : segundos;
-  contador.textContent = `${minutosMostrados}:${segundosMostrados}`;
+// Variables del temporitzador
+let timer;
+let isRunning = false;
+let timeRemaining = 1500; // Temps per defecte (25 minuts)
+let currentTimer = 1500; // Guardar el temps del temporitzador actual
+
+function updateTimerDisplay() {
+  const minutes = Math.floor(timeRemaining / 60);
+  const seconds = timeRemaining % 60;
+  timerDisplay.textContent = `${minutes < 10 ? "0" : ""}${minutes}:${
+    seconds < 10 ? "0" : ""
+  }${seconds}`;
 }
 
-const estudiarBtn = document.querySelector(".estudiar");
-estudiarBtn.addEventListener("click", function () {
-  tiempoSeleccionado = 25 * 60;
-  tiempoRestante = tiempoSeleccionado; // Reiniciar el tiempo restante
-  actualizarContador(tiempoSeleccionado);
-});
-
-const llargaBtn = document.querySelector(".llarga");
-llargaBtn.addEventListener("click", function () {
-  tiempoSeleccionado = 15 * 60;
-  tiempoRestante = tiempoSeleccionado; // Reiniciar el tiempo restante
-  actualizarContador(tiempoSeleccionado);
-});
-
-const curtaBtn = document.querySelector(".curta");
-curtaBtn.addEventListener("click", function () {
-  tiempoSeleccionado = 5 * 60;
-  tiempoRestante = tiempoSeleccionado; // Reiniciar el tiempo restante
-  actualizarContador(tiempoSeleccionado);
-});
-
-let temporizador;
-
-const playPauseBtn = document.querySelector(".playPause");
-playPauseBtn.addEventListener("click", function () {
-  if (!temporizador) {
-    iniciarTemporizador();
+function startPauseTimer() {
+  if (isRunning) {
+    clearInterval(timer);
+    startPauseBtn.textContent = "Començar";
   } else {
-    pausarTemporizador();
-  }
-});
-
-function iniciarTemporizador() {
-  temporizador = setInterval(function () {
-    if (tiempoRestante <= 0) {
-      clearInterval(temporizador);
-      alert("¡Tiempo completado!");
-    } else {
-      tiempoRestante--;
-      actualizarContador(tiempoRestante);
-    }
-  }, 1000);
-}
-
-function pausarTemporizador() {
-  clearInterval(temporizador);
-}
-
-const reiniciarBtn = document.querySelector(".reiniciar");
-reiniciarBtn.addEventListener("click", function () {
-  tiempoRestante = tiempoSeleccionado;
-  actualizarContador(tiempoRestante);
-});
-
-document.addEventListener("DOMContentLoaded", function () {
-  const newTaskBtn = document.querySelector(".newTask");
-
-  // Selecciono la columna donde quiero que se cree la tarea
-  const pendentColumn = document.querySelector(".columna1 .cuerpoColumna");
-
-  ////////////////////////////////////////
-  //CREAR TAREAS//////////////////////////
-  ////////////////////////////////////////
-
-  // Función para crear una nueva tarjeta de tarea
-  // Función para crear una nueva tarjeta de tarea
-  function crearTarjeta(titulo, descripcion, categoria, color) {
-    // Crea los elementos de la tarjeta
-    const card = document.createElement("div");
-    card.classList.add("card");
-    card.style.margin = "10px";
-    // card.setAttribute("draggable", "true"); // Agrega la propiedad draggable
-
-    if (color) {
-      card.style.backgroundColor = color;
-    }
-    const cardBody = document.createElement("div");
-    cardBody.classList.add("card-body");
-    const cardTitle = document.createElement("h4");
-    cardTitle.classList.add("card-title");
-    cardTitle.textContent = titulo;
-    const cardText = document.createElement("p");
-    cardText.classList.add("card-text");
-    cardText.textContent = descripcion;
-    const cardCategory = document.createElement("p");
-    cardCategory.classList.add("card-category");
-    cardCategory.textContent = categoria;
-    cardCategory.textContent = "Categoria: " + categoria;
-
-    // Obtener la fecha y hora actual
-    const fechaHoraActual = new Date().toLocaleString();
-
-    const cardDate = document.createElement("p");
-    cardDate.classList.add("card-date");
-
-    cardDate.textContent = "Fecha y hora: " + fechaHoraActual;
-
-    // Agrega los elementos a la tarjeta
-    cardBody.appendChild(cardTitle);
-    cardBody.appendChild(cardText);
-    cardBody.appendChild(cardCategory);
-    cardBody.appendChild(cardDate);
-    card.appendChild(cardBody);
-
-    // Agrega la tarjeta a la columna "PENDENT"
-    pendentColumn.appendChild(card);
-  }
-
-  // Agrega un evento de clic al botón
-  newTaskBtn.addEventListener("click", function () {
-    // Muestra el pop-up de Sweet Alert
-    Swal.fire({
-      title: "Nueva Tarea",
-      html:
-        '<input id="titulo" class="swal2-input" placeholder="Título">' +
-        '<textarea id="descripcion" class="swal2-input" placeholder="Descripción"></textarea>' +
-        '<select id="categoria" class="swal2-select">' +
-        '<option value="" disabled selected>Selecciona una categoría</option>' +
-        '<option value="Diseño" data-color="#F1948A">Diseño</option>' +
-        '<option value="Front-end" data-color="#C39BD3">Front-end</option>' +
-        '<option value="Back-end" data-color="#85C1E9">Back-end</option>' +
-        "</select>",
-      focusConfirm: false,
-      preConfirm: () => {
-        const titulo = document.getElementById("titulo").value;
-        const descripcion = document.getElementById("descripcion").value;
-        const categoria = document.getElementById("categoria").value;
-        const color =
-          document.getElementById("categoria").options[
-            document.getElementById("categoria").selectedIndex
-          ].dataset.color;
-
-        // Verifica si se ha ingresado un título
-        if (!titulo) {
-          Swal.showValidationMessage("El título es obligatorio");
-        }
-
-        // Retorna los datos ingresados para mostrarlos en la alerta final
-        return { titulo, descripcion, categoria, color };
-      },
-    }).then((result) => {
-      // Muestra un mensaje con los datos ingresados
-      if (result.isConfirmed) {
-        // Crea la tarjeta con los datos ingresados y la agrega a la columna "PENDENT"
-        crearTarjeta(
-          result.value.titulo,
-          result.value.descripcion,
-          result.value.categoria,
-          result.value.color
-        );
-
-        Swal.fire({
-          icon: "success",
-          title: "¡Tarea creada!",
-          html:
-            `Título: ${result.value.titulo}<br>` +
-            `Descripción: ${result.value.descripcion}<br>` +
-            `Categoría: ${
-              result.value.categoria
-                ? result.value.categoria
-                : "No especificada"
-            }`,
-          confirmButtonText: "OK",
-        });
+    timer = setInterval(() => {
+      if (timeRemaining > 0) {
+        timeRemaining--;
+        updateTimerDisplay();
+      } else {
+        clearInterval(timer);
+        alert("Temps complet!");
       }
-    });
-  });
+    }, 1000);
+    startPauseBtn.textContent = "Pausar";
+  }
+  isRunning = !isRunning;
+}
 
-  ////////////////////////////////////////
-  //DRAG AND DROP/////////////////////////
-  ////////////////////////////////////////
+function resetTimer() {
+  clearInterval(timer);
+  timeRemaining = currentTimer; // Reiniciar al temps del temporitzador actual
+  updateTimerDisplay();
+  startPauseBtn.textContent = "Començar";
+  isRunning = false;
+}
+
+function setTimer(minutes) {
+  clearInterval(timer);
+  timeRemaining = minutes * 60;
+  currentTimer = timeRemaining; // Actualitzar el temps del temporitzador actual
+  updateTimerDisplay();
+  startPauseBtn.textContent = "Començar";
+  isRunning = false;
+}
+
+startPauseBtn.addEventListener("click", startPauseTimer);
+resetBtn.addEventListener("click", resetTimer);
+studyBtn.addEventListener("click", () => setTimer(25));
+shortBreakBtn.addEventListener("click", () => setTimer(5));
+longBreakBtn.addEventListener("click", () => setTimer(15));
+
+function createTaskCard(title, desc, category, timestamp) {
+  const taskCard = document.createElement("div");
+  taskCard.className = `task-card ${category}`;
+  taskCard.draggable = true;
+  taskCard.innerHTML = `
+    <h5>${title}</h5>
+    <p>${desc}</p>
+    <small>${category}</small><br>
+    <small>${timestamp}</small>
+    <button class="btn btn-danger btn-sm mt-2 delete-task-btn">Eliminar</button>
+  `;
+  taskCard.addEventListener("dragstart", handleDragStart);
+  return taskCard;
+}
+
+addTaskBtn.addEventListener("click", () => {
+  Swal.fire({
+    title: "Afegir Nova Tasca",
+    html: `
+      <input type="text" id="task-title" class="swal2-input" placeholder="Títol">
+      <textarea id="task-desc" class="swal2-textarea" placeholder="Descripció"></textarea>
+      <select id="task-category" class="swal2-select">
+        <option value="none" selected>Cap</option>
+        <option value="design">Disseny</option>
+        <option value="frontend">Front-end</option>
+        <option value="backend">Back-end</option>
+      </select>
+    `,
+    focusConfirm: false,
+    preConfirm: () => {
+      const title = Swal.getPopup().querySelector("#task-title").value;
+      const desc = Swal.getPopup().querySelector("#task-desc").value;
+      const category = Swal.getPopup().querySelector("#task-category").value;
+      return { title, desc, category };
+    },
+  }).then((result) => {
+    if (result.isConfirmed) {
+      const { title, desc, category } = result.value;
+      const timestamp = new Date().toLocaleString();
+      const taskCard = createTaskCard(title, desc, category, timestamp);
+      pendingTasks.appendChild(taskCard);
+    }
+  });
+});
+
+document.addEventListener("click", (event) => {
+  if (event.target.classList.contains("delete-task-btn")) {
+    if (confirm("Segur que vols eliminar aquesta tasca?")) {
+      event.target.closest(".task-card").remove();
+    }
+  }
+});
+
+function handleDragStart(event) {
+  event.dataTransfer.setData("text/plain", event.target.id);
+  event.dataTransfer.effectAllowed = "move";
+}
+
+function handleDrop(event) {
+  event.preventDefault();
+  const id = e.dataTransfer.getData("text/plain");
+  const taskCard = document.getElementById(id);
+  event.target.appendChild(taskCard);
+}
+
+function handleDragOver(event) {
+  event.preventDefault();
+  event.dataTransfer.dropEffect = "move";
+}
+
+document.querySelectorAll(".task-column").forEach((column) => {
+  column.addEventListener("dragover", handleDragOver);
+  column.addEventListener("drop", (event) => {
+    event.preventDefault();
+    const taskCard = document.querySelector(".dragging");
+    if (taskCard && column.contains(taskCard)) {
+      return;
+    }
+    column.appendChild(taskCard);
+  });
+});
+
+document.addEventListener("dragstart", (event) => {
+  if (event.target.classList.contains("task-card")) {
+    event.target.classList.add("dragging");
+  }
+});
+
+document.addEventListener("dragend", (event) => {
+  if (event.target.classList.contains("task-card")) {
+    event.target.classList.remove("dragging");
+  }
 });

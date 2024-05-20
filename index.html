@@ -1,76 +1,53 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ca">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
     <title>Pomodoro task manager</title>
-
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
-
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="index.css">
-
-    <link rel="icon" type="image/png" href="img/tomate.png">
-</head>
+    <link rel="icon" href="img/tomate.png" type="image/png">
 </head>
 
 <body>
-    <div class="tituloDiv">
-        <h1 class="tituloH2">Pomodoro task manager</h1>
-    </div>
-
-    <div class="bodyDiv">
-        <div class="columna1">
-            <div class="tituloColumna">
-                PENDENT
-            </div>
-            <hr class="separacion" />
-            <div class="cuerpoColumna"></div>
+    <div class="container">
+        <div class="tituloDiv my-4">
+            <h2>M06 REP_04 - Pomodoro task manager</h2>
         </div>
-        <div class="columna2">
-            <div class="tituloColumna">
-                EN PROGRÉS
+        <div class="row mt-5">
+            <div class="col-md-3">
+                <h3>Pendent</h3>
+                <div id="pending-tasks" class="task-column"></div>
             </div>
-            <hr class="separacion" />
-            <div class="cuerpoColumna"></div>
-        </div>
-        <div class="columna3">
-            <div class="tituloColumna">
-                COMPLETADA
+            <div class="col-md-3">
+                <h3>En Progrés</h3>
+                <div id="in-progress-tasks" class="task-column"></div>
             </div>
-            <hr class="separacion" />
-            <div class="cuerpoColumna"></div>
-        </div>
-        <div class="columna4">
-            <div class="boxContador">
-                <div class="timer">
-                    <span class="tiempo">
-                        00:00
-                    </span>
-                </div>
-                <div class="accionesTimer">
-                    <button class="playPause">
-                        <i class="fas fa-play"></i>
-                        /
-                        <i class="fas fa-pause"></i>
-                    </button>
-                    <button class="reiniciar">Reiniciar</button>
-                </div>
-                <div class="pausas">
-                    <button class="estudiar">Estudiar</button>
-                    <button class="llarga">Pausa llarga</button>
-                    <button class="curta">Pausa curta</button>
-                </div>
-                <div class="nuevaTarea">
-                    <button class="newTask">Nueva Tarea</button>
+            <div class="col-md-3">
+                <h3>Completada</h3>
+                <div id="completed-tasks" class="task-column"></div>
+            </div>
+            <div class="col-md-3">
+                <h3>Pomodoro</h3>
+                <div id="pomodoro-timer">
+                    <h1 id="timer-display">25:00</h1>
+                    <button id="start-pause-btn" class="btn btn-success">Començar</button>
+                    <button id="reset-btn" class="btn btn-danger">Reiniciar</button>
+                    <div class="mt-3">
+                        <button id="study-btn" class="btn btn-info">Estudi (25min)</button>
+                        <button id="short-break-btn" class="btn btn-info">Pausa Curta (5min)</button>
+                        <button id="long-break-btn" class="btn btn-info">Pausa Llarga (15min)</button>
+                    </div>
+                    <button id="add-task-btn" class="btn btn-primary mt-3">Afegir Tasca</button>
                 </div>
             </div>
         </div>
     </div>
-
-    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
     <script src="index.js"></script>
 </body>
 

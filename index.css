@@ -1,116 +1,52 @@
-* {
-  margin: 0px;
-  padding: 0px;
-}
-
-body {
-  background-color: #63f4f7;
-}
-
-div.tituloDiv {
-  height: 100px;
-  width: 100%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-div.bodyDiv {
-  height: auto;
-  width: 100%;
-  display: flex;
-  justify-content: space-evenly;
-  margin-top: 40px;
-}
-
-div.columna1,
-div.columna2,
-div.columna3 {
-  height: 700px;
-  width: calc(100% / 5);
-  border: solid 2px black;
-  background-color: #fafaf8;
-}
-
-div.tituloColumna {
-  height: 15%;
-  width: 100%;
-  font-size: 35px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
+.task-column {
+  min-height: 300px;
   padding: 10px;
-  background-color: #456e87;
-  color: white;
+  background-color: #f8f9fa;
+  border: 1px solid #dee2e6;
+  border-radius: 5px;
 }
 
-hr.separacion {
-  border: solid 2px black;
-  margin: 0px;
-}
-
-div.cuerpoColumna {
-  height: auto;
-  width: 100%;
-  overflow-y: auto;
-  max-height: 588px;
-}
-
-div.columna4 {
-  height: 700px;
-  width: calc(100% / 5);
-  border: solid 2px black;
+.tituloDiv {
   display: flex;
   align-items: center;
   justify-content: center;
 }
 
-div.boxContador {
-  height: auto;
-  width: 100%;
-  padding: 5px;
+h2 {
+  margin-bottom: 0px !important;
 }
 
-div.timer {
-  height: auto;
-  width: 100%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
+.task-card {
+  margin-bottom: 10px;
+  padding: 10px;
+  border-radius: 5px;
+  cursor: pointer;
 }
 
-span.tiempo {
-  font-size: 50px;
-  margin: 10px;
+.task-card.design {
+  background-color: #d1e7dd;
 }
 
-div.accionesTimer,
-div.pausas,
-div.nuevaTarea {
-  height: 100px;
-  width: 100%;
-  display: flex;
-  align-items: center;
-  justify-content: space-evenly;
+.task-card.frontend {
+  background-color: #cff4fc;
 }
 
-button.playPause,
-button.reiniciar,
-button.estudiar,
-button.llarga,
-button.curta {
-  height: 40px;
-  width: 100px;
-  margin: 10px;
+.task-card.backend {
+  background-color: #f8d7da;
 }
 
-button.newTask {
-  height: 40px;
-  width: 100%;
-  margin: 10px;
+.task-card.none {
+  background-color: #e2e3e5;
 }
 
-h4.card-title,
-p {
-  margin: 0px;
+#pomodoro-timer {
+  text-align: center;
+}
+
+#timer-display {
+  font-size: 48px;
+}
+
+.dragging {
+  opacity: 0.5;
 }
