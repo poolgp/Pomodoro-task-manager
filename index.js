@@ -14,6 +14,7 @@ let enExecucio = false;
 let tempsRestant = 1500;
 let tempsActual = 1500;
 
+//Funcion que hace funcionar el temporizador
 function actualitzaPantallaTemporitzador() {
   const minuts = Math.floor(tempsRestant / 60);
   const segons = tempsRestant % 60;
@@ -22,6 +23,7 @@ function actualitzaPantallaTemporitzador() {
   }${segons}`;
 }
 
+//Funcion para iniciar y pausar el temporizador
 function iniciarPausarTemporitzador() {
   if (enExecucio) {
     clearInterval(temporitzador);
@@ -41,6 +43,7 @@ function iniciarPausarTemporitzador() {
   enExecucio = !enExecucio;
 }
 
+//Funcion para reinicar el temporizador
 function reiniciarTemporitzador() {
   clearInterval(temporitzador);
   tempsRestant = tempsActual;
@@ -49,6 +52,7 @@ function reiniciarTemporitzador() {
   enExecucio = false;
 }
 
+//Funcion para establecer el tiempo a segundos
 function establirTemporitzador(minuts) {
   clearInterval(temporitzador);
   tempsRestant = minuts * 60;
@@ -64,6 +68,7 @@ btnEstudi.addEventListener("click", () => establirTemporitzador(25));
 btnPausaCurta.addEventListener("click", () => establirTemporitzador(5));
 btnPausaLlarga.addEventListener("click", () => establirTemporitzador(15));
 
+//Funcion que crea la tasca en la columna "to do"
 function crearTasca(titol, desc, categoria, timestamp) {
   const tarjetaTasca = document.createElement("div");
   tarjetaTasca.className = `task-card ${categoria}`;
@@ -117,11 +122,13 @@ document.addEventListener("click", (event) => {
   }
 });
 
+//Funcion que controla el arrastrar 
 function manejarArrossegamentInici(event) {
   event.dataTransfer.setData("text/plain", event.target.id);
   event.dataTransfer.effectAllowed = "move";
 }
 
+//Funcion que controla el drop
 function manejarDeixar(event) {
   event.preventDefault();
   const id = event.dataTransfer.getData("text/plain");
